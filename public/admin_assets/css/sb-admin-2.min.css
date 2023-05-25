@@ -5003,6 +5003,22 @@ input[type=submit].btn-block {
     border: 1px solid #e3e6f0;
     border-radius: .35rem
 }
+.cardd {
+
+    flex-direction: column;
+    min-width: 10vw;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 3px solid #0a0c11;
+    border-radius: .35rem;
+    width: 15vw;
+}
+
+.custom-card {
+    width: 150px; /* Ajusta el ancho deseado de la tarjeta */
+    height: 150px; /* Ajusta la altura deseada de la tarjeta */
+  }
+
 
 .card>hr {
     margin-right: 0;
@@ -5038,7 +5054,9 @@ input[type=submit].btn-block {
 }
 
 .card-title {
-    margin-bottom: .75rem
+    margin-bottom: .55rem;
+    margin-top: 15px;
+    align-items: flex-start;
 }
 
 .card-subtitle {
@@ -10994,30 +11012,37 @@ a:focus {
 
 .cont {
     text-align: start;
+    margin-left: 5vw;
   }
 
   .card-body {
+    flex-direction: row;
     display: flex;
     align-items: center;
-    
+  }
+
+  .card-bod {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
   }
 
   .card-body img {
-   margin-left: -6px;
+   margin-left: -20px;
     width: 40px;
     height: 30px;
   }
 
   .card {
     display: inline-block;
-    max-width: 10rem;
+    max-width: 15rem;
     margin: 10px;
     width: 140px;
     height: 70px;
-    background-color: #ffffff;
+    background-color: #fff;
     border-radius: .4rem;
     border-color: #6e707e;
-    border: 1;
+    border: 2;
   }
 
   .text {
@@ -11025,6 +11050,8 @@ a:focus {
     size: 8px;
     margin-left: 4px;
   }
+
+
 
   .img-side{
     width: 20px;
@@ -11058,6 +11085,118 @@ a:focus {
     padding: 10px;
     text-align: left;
   }
+
+  .text-c {
+    font-size: small;
+  }
+
+  .carousel {
+    width: 80vw; /* Opcional: Establece un ancho máximo si lo deseas */
+    border: 5px;
+  }
+
+  .carousel-inner {
+    height: 200px; /* Ajusta la altura según tus necesidades */
+  }
+
+
+  .containerr {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-wrapperr {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .cards-containerr {
+    display: flex;
+    transition: transform 0.3s ease;
+  }
+
+  .cardd {
+    flex: 0 0 15%;
+    max-width: 15%;
+    padding: 20px;
+  }
+
+
+
+@media (min-width: 576px) {
+    .cardd {
+        width: 50%;
+    }
+}
+
+@media (min-width: 768px) {
+    .cardd {
+        width: 33.33%;
+    }
+}
+
+@media (min-width: 992px) {
+    .cardd {
+        width: 25%;
+    }
+}
+
+  .controls {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .prev-button,
+  .next-button {
+    font-size: 18px;
+    padding: 5px 10px;
+    margin: 0 5px;
+  }
+
+
+  @media (max-width: 768px) {
+    .carousel-inner {
+      height: 50vw; /* Ajusta la altura para pantallas más pequeñas */
+    }
+    .carousel-caption {
+        font-size: 16px;
+    }
+  }
+
+  .dblog {
+    justify-content: center;
+    justify-items: center;
+  }
+
+
+  .carousel-image-overlay {
+    position: relative;
+}
+
+.carousel-image-overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1200px;
+    height: 1000px;
+    background-color: rgba(99, 25, 160, 0.921); /* un fondo negro con una opacidad del 50% */
+    opacity: 0.7;
+
+}
+
+
+
+  .card-text {
+    font-size: 10px;
+    text-align: center;
+    max-height: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+  }
+
+
 
 
 #wrapper #content-wrapper {

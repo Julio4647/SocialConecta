@@ -1,9 +1,9 @@
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" >
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center">
         <div class="sidebar-brand-text mx-3 mp-3">
-            <img src="{{asset('img/sc1.png')}}" style="width: 115px; height: 60px; align-items: center; margin-top: 10px; justify-content: center;">
+            <img src="{{asset('img/sc1.png')}}" style="width: 125px; height: 65px; align-items: center; margin-top: 10px; justify-content: center;">
         </div>
     </a>
 
@@ -41,7 +41,7 @@
             <span style="color:black">Mi Equipo</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/profile">
+        <a class="nav-link" href="{{ route('clientes') }}">
             <i><img class="img-side" src="https://img.icons8.com/ios-filled/100/000000/groups.png" alt="groups"/></i>
             <span style="color:black">Mis Clientes</span></a>
     </li>

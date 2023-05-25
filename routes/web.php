@@ -1,6 +1,7 @@
 <?php
-
+use App\Models\Note;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\NotaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,8 +34,17 @@ Route::controller(AuthController::class)->group(function() {
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('dashboard',[NotaController::class,'index'])->name('dashboard');
+    Route::post('nota/save', [NotaController::class, 'guardarNota'])->name('notaSave');
 
-});   
+
+
+    Route::get('clientes', function () {
+        return view('clientes');
+    })->name('clientes');
+
+});
+
+
+
+

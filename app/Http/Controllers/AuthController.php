@@ -20,6 +20,11 @@ class AuthController extends Controller
         foreach ($users as $user) {
             echo $user->name;
         }
+
+        $admins = DB::select('select * from admins');
+        foreach ($admins as $admin) {
+            echo $admin->name;
+        }
     }
 
     public function register()
@@ -35,6 +40,7 @@ class AuthController extends Controller
             'password' => 'required|confirmed'
         ])->validate();
 
+
         User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -42,6 +48,15 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
             'level' => 'Admin'
         ]);
+
+        Admin::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'last_name' => $request->last_name,
+            'password' => Hash::make($request->password),
+            'level' => 'Admin'
+        ]);
+
 
 
 
@@ -53,22 +68,32 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
+
+    protected function guard()
+    {
+
+        return Auth::guard('admin');
+    }
+
+
+
     public function loginAction(Request $request)
     {
-        Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
 
-        if (!Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
-            throw ValidationException::withMessages([
-                'email' => trans('auth.failed')
-            ]);
+
+        $user = User::where('email', $request->email)->first();
+        $admin = Admin::where('email', $request->email)->first();
+
+        if ($user && Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            // El usuario ha iniciado sesión exitosamente como usuario
+            return redirect()->intended('/dashboard');
+        } elseif ($admin && Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
+            // El usuario ha iniciado sesión exitosamente como administrador
+            return redirect()->intended('/dashboard');
+        } else {
+            // Las credenciales de inicio de sesión son incorrectas
+            return back()->withErrors(['email' => 'Credenciales incorrectas.'])->withInput($request->only('email'));
         }
-
-        $request->session()->regenerate();
-
-        return redirect()->route('dashboard');
     }
 
     public function resetPassword(Request $request)
